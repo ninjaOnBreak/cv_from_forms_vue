@@ -14,6 +14,10 @@ export default new Vuex.Store({
       formerEmployer: '',
       jobTitle: '',
       experience: '',
+      school: '',
+      degree: '',
+      education: '',
+      hobby: '',
     },
   },
 
@@ -41,6 +45,18 @@ export default new Vuex.Store({
     },
     setExperience(state, experience) {
       state.formData.experience = experience;
+    },
+    setSchool(state, school) {
+      state.formData.school = school;
+    },
+    setDegree(state, degree) {
+      state.formData.degree = degree;
+    },
+    setEducation(state, education) {
+      state.formData.education = education;
+    },
+    setHobby(state, hobby) {
+      state.formData.hobby = hobby;
     },
   },
 });

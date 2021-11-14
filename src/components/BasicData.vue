@@ -194,18 +194,6 @@ export default {
     phone: { required, minLength: minLength(9) },
     desc: { required, minLength: minLength(9) },
   },
-
-  methods: {
-    handleSubmit(e) {
-      // stop here if form is invalid
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        return;
-      }
-
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.user));
-    },
-  },
 };
 </script>
 <style>

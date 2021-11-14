@@ -4,68 +4,90 @@
       <h2 class="p-4">Education and Hobby (3/3)</h2>
       <form>
         <div class="form-group my-3">
-          <label for="formerEmployer">Employer</label>
+          <label for="school">Name of the school/university, etc.</label>
           <input
             type="text"
-            v-model="formerEmployer"
-            id="formerEmployer"
+            v-model="school"
+            id="school"
             class="form-control"
-            @blur="$v.formerEmployer.$touch()"
+            @blur="$v.school.$touch()"
             :class="{
-              'is-invalid': $v.formerEmployer.$error,
-              'is-valid': !$v.formerEmployer.$error && $v.formerEmployer.$dirty,
+              'is-invalid': $v.school.$error,
+              'is-valid': !$v.school.$error && $v.school.$dirty,
             }"
           />
-          <div v-if="$v.formerEmployer.$error" class="invalid-feedback">
-            <p v-if="!$v.formerEmployer.required">
-              Former employer is required
+          <div v-if="$v.school.$error" class="invalid-feedback">
+            <p v-if="!$v.school.required">
+              Name of the school/university, etc. is required
             </p>
-            <p v-if="!$v.formerEmployer.minLength">
-              Former employer must be at least 3 characters long
+            <p v-if="!$v.school.minLength">
+              Name of the school/university, etc. must be at least 3 characters
+              long
             </p>
           </div>
         </div>
 
         <div class="form-group my-3">
-          <label for="jobTitle">Job title</label>
+          <label for="jobTitle">Degree/name of the course</label>
           <input
             type="text"
-            v-model="jobTitle"
-            id="jobTitle"
+            v-model="degree"
+            id="degree"
             class="form-control"
-            @blur="$v.jobTitle.$touch()"
+            @blur="$v.degree.$touch()"
             :class="{
-              'is-invalid': $v.jobTitle.$error,
-              'is-valid': !$v.jobTitle.$error && $v.jobTitle.$dirty,
+              'is-invalid': $v.degree.$error,
+              'is-valid': !$v.degree.$error && $v.degree.$dirty,
             }"
           />
-          <div v-if="$v.jobTitle.$error" class="invalid-feedback">
-            <p v-if="!$v.jobTitle.required">Job title is required</p>
-            <p v-if="!$v.jobTitle.minLength">
-              Job title must be at least 3 characters long
+          <div v-if="$v.degree.$error" class="invalid-feedback">
+            <p v-if="!$v.degree.minLength">
+              Degree/name of the course must be at least 3 characters long
             </p>
           </div>
         </div>
 
         <div class="form-group my-3">
-          <label for="desc">Experience</label>
+          <label for="desc">Education description</label>
           <textarea
             type="text"
-            v-model="experience"
-            id="experience"
-            placeholder="e.g. Relevant projects finished in the past"
+            v-model="education"
+            id="education"
+            placeholder="e.g. Gained skills, speciality..."
             rows="6"
             class="form-control"
-            @blur="$v.experience.$touch()"
+            @blur="$v.education.$touch()"
             :class="{
-              'is-invalid': $v.experience.$error,
-              'is-valid': !$v.experience.$error && $v.experience.$dirty,
+              'is-invalid': $v.education.$error,
+              'is-valid': !$v.education.$error && $v.education.$dirty,
             }"
           />
-          <div v-if="$v.experience.$error" class="invalid-feedback">
-            <p v-if="!$v.experience.required">Experience is required</p>
-            <p v-if="!$v.experience.minLength">
-              Experience must be at least 30 characters long
+          <div v-if="$v.education.$error" class="invalid-feedback">
+            <p v-if="!$v.education.required">
+              Education description is required
+            </p>
+            <p v-if="!$v.education.minLength">
+              Education description must be at least 9 characters long
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group my-3">
+          <label for="jobTitle">Hobby or interests</label>
+          <input
+            type="text"
+            v-model="hobby"
+            id="hobby"
+            class="form-control"
+            @blur="$v.hobby.$touch()"
+            :class="{
+              'is-invalid': $v.hobby.$error,
+              'is-valid': !$v.hobby.$error && $v.hobby.$dirty,
+            }"
+          />
+          <div v-if="$v.hobby.$error" class="invalid-feedback">
+            <p v-if="!$v.hobby.minLength">
+              Hobby/interests must be at least 3 characters long
             </p>
           </div>
         </div>
@@ -93,47 +115,53 @@ export default {
 
   computed: {
     checkButton() {
-      if (
-        this.$v.formerEmployer.$dirty &&
-        this.$v.jobTitle.$dirty &&
-        this.$v.experience.$dirty
-      ) {
+      if (this.$v.school.$dirty && this.$v.education.$dirty) {
         return !this.$v.$anyError ? false : true;
       } else return true;
     },
 
-    formerEmployer: {
+    school: {
       get() {
-        return this.$store.state.formData.formerEmployer;
+        return this.$store.state.formData.school;
       },
       set(value) {
-        this.$store.commit('setFormerEmployer', value);
+        this.$store.commit('setSchool', value);
       },
     },
 
-    jobTitle: {
+    degree: {
       get() {
-        return this.$store.state.formData.jobTitle;
+        return this.$store.state.formData.degree;
       },
       set(value) {
-        this.$store.commit('setJobTitle', value);
+        this.$store.commit('setDegree', value);
       },
     },
 
-    experience: {
+    education: {
       get() {
-        return this.$store.state.formData.experience;
+        return this.$store.state.formData.education;
       },
       set(value) {
-        this.$store.commit('setExperience', value);
+        this.$store.commit('setEducation', value);
+      },
+    },
+
+    hobby: {
+      get() {
+        return this.$store.state.formData.hobby;
+      },
+      set(value) {
+        this.$store.commit('setHobby', value);
       },
     },
   },
 
   validations: {
-    formerEmployer: { required, minLength: minLength(3) },
-    jobTitle: { required, minLength: minLength(3) },
-    experience: { required, minLength: minLength(9) },
+    school: { required, minLength: minLength(3) },
+    degree: { minLength: minLength(3) },
+    education: { required, minLength: minLength(9) },
+    hobby: { minLength: minLength(3) },
   },
 };
 </script>
