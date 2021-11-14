@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .start {
   display: flex;
   flex-direction: column;

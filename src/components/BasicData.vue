@@ -196,7 +196,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .form-vertical {
   display: flex;
   flex-direction: column;

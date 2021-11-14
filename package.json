@@ -1,8 +1,8 @@
 {
-  "name": "vue-form-validation-with-vuelidate",
-  "version": "0.1.5",
-  "description": "Simple form in Vue refactored with Vuelidate",
-  "main": "index.js",
+  "name": "vue-cv-from-forms-ninjaonbreak",
+  "version": "0.1.6",
+  "description": "Simple CV Generator with Vuelidate",
+  "main": "./src/main.js",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development"
