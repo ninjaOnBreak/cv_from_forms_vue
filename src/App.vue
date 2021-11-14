@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="cv-generator">
     <router-view />
   </div>
 </template>
