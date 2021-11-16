@@ -5,31 +5,31 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: 'cvgenerator/start',
     name: 'Start',
     component: () => import('../components/Start.vue'),
     meta: { title: 'CV Generator - Start' },
   },
   {
-    path: '/basic',
+    path: 'cvgenerator/basic',
     name: 'BasicData',
     component: () => import('../components/BasicData.vue'),
     meta: { title: 'CV Generator - Basic Stuff' },
   },
   {
-    path: '/work',
+    path: 'cvgenerator/work',
     name: 'WorkData',
     component: () => import('../components/WorkData.vue'),
     meta: { title: 'CV Generator - Experience' },
   },
   {
-    path: '/education',
+    path: 'cvgenerator/education',
     name: 'EducationHobbyData',
     component: () => import('../components/EducationHobbyData.vue'),
     meta: { title: 'CV Generator - Education/Hobby' },
   },
   {
-    path: '/summary',
+    path: 'cvgenerator/summary',
     name: 'Result',
     component: () => import('../components/Result.vue'),
     meta: { title: 'CV Generator - Summary' },
